@@ -16,7 +16,8 @@ class ChatHistoryTracker:
         self.query_count += 1
         self.total_response_time += time_sec
 
-    def get_average_response_time((self) -> float:
+    # ✅ FIXED: Corrected parenthesis here
+    def get_average_response_time(self) -> float:
         return round(self.total_response_time / self.query_count, 2) if self.query_count > 0 else 0.0
 
     def clear(self):
