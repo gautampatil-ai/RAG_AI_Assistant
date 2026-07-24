@@ -27,7 +27,7 @@ class Settings(BaseSettings):
     TOP_K_RETRIEVAL: int = 4
     
     # Gemini LLM Settings
-    GEMINI_MODEL_NAME: str = "gemini-2.5-flash"
+    GEMINI_MODEL_NAME: str = "gemini-1.5-flash"
     TEMPERATURE: float = 0.1
     MAX_OUTPUT_TOKENS: int = 2048
 
