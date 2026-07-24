@@ -1,0 +1,17 @@
+streamlit
+fastapi
+uvicorn
+python-dotenv
+pydantic
+pydantic-settings
+langchain
+langchain-community
+langchain-google-genai
+sentence-transformers
+faiss-cpu
+PyPDF2
+python-docx
+pandas
+numpy
+requests
+python-multipart
