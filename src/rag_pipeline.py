@@ -1,5 +1,7 @@
 import time
 from typing import Dict, Any
+from langchain_core.messages import HumanMessage  # 👈 1. Added import
+
 from src.loader import DocumentLoader
 from src.chunker import TextChunker
 from src.embedding import EmbeddingEngine
@@ -22,7 +24,8 @@ class RAGPipeline:
 
     def process_and_index_file(self, file_name: str, file_bytes: bytes) -> Dict[str, Any]:
         is_valid, msg = validate_file(file_name, len(file_bytes))
-        if not is_valid: raise ValueError(msg)
+        if not is_valid: 
+            raise ValueError(msg)
 
         safe_name = sanitize_filename(file_name)
         save_path = settings.UPLOAD_DIR / safe_name
@@ -61,7 +64,9 @@ class RAGPipeline:
             })
 
         formatted_prompt = PROMPT.format(context=context_str, question=question)
-        response = self.llm_engine.get_llm().invoke(formatted_prompt)
+        
+        # 👈 2. Updated invocation to wrap prompt in HumanMessage
+        response = self.llm_engine.get_llm().invoke([HumanMessage(content=formatted_prompt)])
 
         return {
             "answer": response.content,
